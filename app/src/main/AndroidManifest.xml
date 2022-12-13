@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Wallocity"
         tools:targetApi="31">
         <activity
-            android:name=".SetWallpaper"
+            android:name=".activities.SetWallpaper"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
