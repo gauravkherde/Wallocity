@@ -24,14 +24,14 @@ class HomeViewModel(val repository: WallpaperRepository): ViewModel() {
        // getWallpaper("nature")
     }
 
-    fun getWallpaper(s: String) {
+    fun getWallpaper(s: String,page: Int) {
         viewModelScope.launch {
-            val response = repository.getWallpaper(s)
+            val response = repository.getWallpaper(s,page)
             wallpaperLiveData.postValue(response)
         }
     }
     fun getAllWallpaper(page:Int ) {
-        this.page =page+1
+        this.page =page
         viewModelScope.launch {
             val response = repository.getAllWallpaper(page)
             wallpaperLiveData.postValue(response)

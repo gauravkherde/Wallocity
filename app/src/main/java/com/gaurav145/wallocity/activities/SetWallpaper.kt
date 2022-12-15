@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.core.view.drawToBitmap
 import com.bumptech.glide.Glide
 import com.gaurav145.wallocity.R
@@ -34,6 +35,7 @@ class SetWallpaper : AppCompatActivity() {
             try {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     wallpaperManager.setBitmap(binding.imgSetWallpaper.drawToBitmap(),null,true,WallpaperManager.FLAG_SYSTEM)
+                    Toast.makeText(applicationContext, "Wallpaper set successfully", Toast.LENGTH_LONG).show()
                 }
             }catch (e: IOException)
             {
