@@ -13,7 +13,7 @@ class WallpaperAdapter: RecyclerView.Adapter<WallpaperAdapter.WallpaperViewHolde
 
      var  wallpaperList = ArrayList<Photo>()
     lateinit var  contextx: Context
-    var onItemClick : ((Src) -> Unit?)? =null
+    var onItemClick : ((Photo) -> Unit?)? =null
 
     fun setWallpapers(wallpapers: ArrayList<Photo>,context: Context){
         this.wallpaperList=wallpapers
@@ -30,7 +30,7 @@ class WallpaperAdapter: RecyclerView.Adapter<WallpaperAdapter.WallpaperViewHolde
         Glide.with(holder.itemView).load(wallpaperList[position].src.portrait).into(holder.binding.imgWallpaper)
 
         holder.itemView.setOnClickListener {
-            onItemClick!!.invoke(wallpaperList[position].src)
+            onItemClick!!.invoke(wallpaperList[position])
         }
 
     }

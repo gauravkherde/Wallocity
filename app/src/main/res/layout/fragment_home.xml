@@ -35,33 +35,51 @@
                     android:layout_weight="3"
                     android:fontFamily="@font/myfont"
                     android:hint="Search.."
+                    android:maxLines="1"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/img_search"
                     android:layout_width="50dp"
-                    android:layout_marginStart="5dp"
-                    app:tint="@color/white"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/search" />
+                    android:src="@drawable/search"
+                    app:tint="@color/white" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_popular_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/myfont"
+                android:text="Popular Categories"
+                android:textColor="@color/primary"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_linear_layout" />
 
             <LinearLayout
                 android:id="@+id/row_1_linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/search_linear_layout">
+                app:layout_constraintTop_toBottomOf="@id/tv_popular_category">
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cat_row_1_col_1"
@@ -97,9 +115,8 @@
                     android:id="@+id/cat_row_1_col_2"
                     android:layout_width="190dp"
                     android:layout_height="60dp"
-
                     android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/white"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="10dp">
 
                     <ImageView
@@ -145,8 +162,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-
-                    android:backgroundTint="@color/white"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="10dp">
 
                     <ImageView
@@ -174,7 +190,7 @@
                     android:layout_width="190dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/white"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="10dp">
 
                     <ImageView
@@ -218,7 +234,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/white"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="10dp">
 
                     <ImageView
@@ -246,7 +262,7 @@
                     android:layout_width="190dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/white"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="10dp">
 
                     <ImageView
@@ -271,25 +287,25 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/page_linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/page_linear"
                 android:gravity="center"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/row_3_linear">
 
                 <ImageView
+                    android:id="@+id/leftArrow"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/left"
-                    android:id="@+id/leftArrow"
-                    android:layout_marginEnd="50dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginBottom="5dp"
-                    app:layout_constraintEnd_toStartOf="@id/tv_load_more"
                     android:layout_marginTop="5dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/left"
+                    app:layout_constraintEnd_toStartOf="@id/tv_load_more"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:tint="@color/white" />
 
                 <TextView
@@ -297,29 +313,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
                     android:fontFamily="@font/myfont"
                     android:text="Page No"
                     android:textColor="@color/primary"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@id/rightArrow"
-                    android:layout_marginBottom="5dp"
                     app:layout_constraintStart_toEndOf="@id/leftArrow" />
 
                 <ImageView
+                    android:id="@+id/rightArrow"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/right"
-                    android:id="@+id/rightArrow"
                     android:layout_marginStart="50dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="5dp"
-
-                    app:layout_constraintStart_toEndOf="@id/tv_load_more"
-                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical"
+
+                    android:src="@drawable/right"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_load_more"
                     app:tint="@color/white" />
             </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/wallpaper_recycle_view"
                 android:layout_width="match_parent"

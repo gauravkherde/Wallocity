@@ -109,10 +109,16 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.catRow1Col1.setOnClickListener {
             page = 1
             if (!minimalClick) {
                 minimalClick = true
+                abstractClick = false
+                gameClick = false
+                natureClick = false
+                trendingClick = false
+                sportClick = false
                 viewModel.getWallpaper("minimal", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -122,22 +128,33 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-                            binding.catRow1Col1.setCardBackgroundColor(resources.getColor(R.color.grey))
+
                         }
                     }
+
                 })
+                binding.catRow1Col1.setCardBackgroundColor(resources.getColor(R.color.grey))
+                binding.catRow2Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow2Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow2Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow3Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.white))
             } else if (minimalClick) {
                 minimalClick = false
                 viewModel.getAllWallpaper(1)
                 binding.catRow1Col1.setCardBackgroundColor(resources.getColor(R.color.white))
-
-            }
+           }
         }
 
         binding.catRow1Col2.setOnClickListener {
             page = 1
             if (!abstractClick) {
                 abstractClick = true
+                minimalClick = false
+                gameClick = false
+                natureClick = false
+                trendingClick = false
+                sportClick = false
                 viewModel.getWallpaper("abstract", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -147,10 +164,15 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-                            binding.catRow1Col2.setCardBackgroundColor(resources.getColor(R.color.grey))
                         }
                     }
                 })
+                binding.catRow1Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow2Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow2Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow3Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow1Col2.setCardBackgroundColor(resources.getColor(R.color.grey))
             } else if (abstractClick) {
                 abstractClick = false
                 viewModel.getAllWallpaper(1)
@@ -163,6 +185,11 @@ class HomeFragment : Fragment() {
             page = 1
             if (!gameClick) {
                 gameClick = true
+                minimalClick = false
+                abstractClick = false
+                natureClick = false
+                trendingClick = false
+                sportClick = false
                 viewModel.getWallpaper("game", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -172,10 +199,17 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-                            binding.catRow2Col1.setCardBackgroundColor(resources.getColor(R.color.grey))
+
                         }
                     }
+
                 })
+                binding.catRow2Col1.setCardBackgroundColor(resources.getColor(R.color.grey))
+                binding.catRow1Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow1Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow2Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow3Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.white))
             } else if (gameClick) {
                 gameClick = false
                 viewModel.getAllWallpaper(1)
@@ -188,6 +222,11 @@ class HomeFragment : Fragment() {
             page = 1
             if (!natureClick) {
                 natureClick = true
+                minimalClick = false
+                abstractClick = false
+                gameClick = false
+                trendingClick = false
+                sportClick = false
                 viewModel.getWallpaper("nature", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -197,10 +236,17 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-                            binding.catRow2Col2.setCardBackgroundColor(resources.getColor(R.color.grey))
+
                         }
                     }
+
                 })
+                binding.catRow2Col2.setCardBackgroundColor(resources.getColor(R.color.grey))
+                binding.catRow1Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow2Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow1Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow3Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.white))
             } else if (natureClick) {
                 natureClick = false
                 viewModel.getAllWallpaper(1)
@@ -213,6 +259,11 @@ class HomeFragment : Fragment() {
             page = 1
             if (!trendingClick) {
                 trendingClick = true
+                minimalClick = false
+                abstractClick = false
+                gameClick = false
+                natureClick = false
+                sportClick = false
                 viewModel.getWallpaper("trending", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -222,10 +273,17 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-                            binding.catRow3Col1.setCardBackgroundColor(resources.getColor(R.color.grey))
+
                         }
                     }
+
                 })
+                binding.catRow3Col1.setCardBackgroundColor(resources.getColor(R.color.grey))
+                binding.catRow1Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow2Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow2Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow1Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.white))
             } else if (trendingClick) {
                 trendingClick = false
                 viewModel.getAllWallpaper(1)
@@ -238,6 +296,11 @@ class HomeFragment : Fragment() {
             page = 1
             if (!sportClick) {
                 sportClick = true
+                minimalClick = false
+                abstractClick = false
+                gameClick = false
+                natureClick = false
+                trendingClick = false
                 viewModel.getWallpaper("sport", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -247,10 +310,17 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-                            binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.grey))
+
                         }
                     }
+
                 })
+                binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.grey))
+                binding.catRow1Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow2Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow2Col2.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow3Col1.setCardBackgroundColor(resources.getColor(R.color.white))
+                binding.catRow1Col1.setCardBackgroundColor(resources.getColor(R.color.white))
             } else if (sportClick) {
                 sportClick = false
                 viewModel.getAllWallpaper(1)
@@ -289,13 +359,15 @@ class HomeFragment : Fragment() {
     private fun onWallpaperClick() {
         wallpaperAdapter.onItemClick = {
             val intent = Intent(activity, SetWallpaper::class.java)
-            intent.putExtra(WALL_SRC, it.portrait)
+            intent.putExtra(WALL_SRC, it.src.portrait)
+            intent.putExtra(WALL_SRC_ID, it.id.toString())
             startActivity(intent)
         }
     }
 
     companion object {
         const val WALL_SRC = "WALL_SRC"
+        const val WALL_SRC_ID = "WALL_SRC_ID"
     }
 
 }

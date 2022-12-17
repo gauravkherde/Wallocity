@@ -21,10 +21,22 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/btn_setWallpaper"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_downloadWallpaper"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="20dp"
         android:text="Set WallPaper" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/btn_downloadWallpaper"
+        android:src="@drawable/download"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="25dp"
+        app:tint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
