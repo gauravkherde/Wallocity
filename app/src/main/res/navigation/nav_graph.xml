@@ -12,8 +12,8 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_wallpaperFragment"
-            app:destination="@id/wallpaperFragment" />
+            android:id="@+id/action_homeFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/wallpaperFragment"
@@ -21,7 +21,19 @@
         android:label="fragment_wallpaper"
         tools:layout="@layout/fragment_wallpaper" >
         <action
-            android:id="@+id/action_wallpaperFragment_to_homeFragment"
+            android:id="@+id/action_wallpaperFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.gaurav145.wallocity.fragment.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_wallpaperFragment"
+            app:destination="@id/wallpaperFragment" />
     </fragment>
 </navigation>
