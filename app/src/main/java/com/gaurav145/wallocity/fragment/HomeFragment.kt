@@ -1,11 +1,13 @@
 package com.gaurav145.wallocity.fragment
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -59,6 +61,7 @@ class HomeFragment : Fragment() {
 
         binding.rightArrow.setOnClickListener {
             page++
+            binding.progressCircular.visibility=View.VISIBLE
             if (minimalClick) viewModel.getWallpaper("minimal", page)
             else if (abstractClick) viewModel.getWallpaper("abstract", page)
             else if (gameClick) viewModel.getWallpaper("game", page)
@@ -66,6 +69,7 @@ class HomeFragment : Fragment() {
             else if (trendingClick) viewModel.getWallpaper("trending", page)
             else if (sportClick) viewModel.getWallpaper("sport", page)
             else viewModel.getAllWallpaper(page)
+
 
         }
     }
@@ -75,7 +79,7 @@ class HomeFragment : Fragment() {
         binding.leftArrow.setOnClickListener {
             page--
             if (page >= 1) {
-
+                binding.progressCircular.visibility=View.VISIBLE
                 if (minimalClick) viewModel.getWallpaper("minimal", page)
                 else if (abstractClick) viewModel.getWallpaper("abstract", page)
                 else if (gameClick) viewModel.getWallpaper("game", page)
@@ -91,6 +95,7 @@ class HomeFragment : Fragment() {
 
     private fun onSearchButton() {
         binding.imgSearch.setOnClickListener {
+            binding.progressCircular.visibility=View.VISIBLE
             var searchText: String = binding.tvSearch.text.toString()
             viewModel.getWallpaper(searchText, 1)
             viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
@@ -101,6 +106,7 @@ class HomeFragment : Fragment() {
                             response.photos as ArrayList<Photo>,
                             requireContext()
                         )
+                        binding.progressCircular.visibility=View.GONE
                     }
                 }
             })
@@ -119,6 +125,7 @@ class HomeFragment : Fragment() {
                 natureClick = false
                 trendingClick = false
                 sportClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getWallpaper("minimal", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -128,7 +135,7 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-
+                            binding.progressCircular.visibility=View.GONE
                         }
                     }
 
@@ -141,6 +148,7 @@ class HomeFragment : Fragment() {
                 binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.white))
             } else if (minimalClick) {
                 minimalClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getAllWallpaper(1)
                 binding.catRow1Col1.setCardBackgroundColor(resources.getColor(R.color.white))
            }
@@ -155,6 +163,7 @@ class HomeFragment : Fragment() {
                 natureClick = false
                 trendingClick = false
                 sportClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getWallpaper("abstract", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -164,6 +173,7 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
+                            binding.progressCircular.visibility=View.GONE
                         }
                     }
                 })
@@ -175,6 +185,7 @@ class HomeFragment : Fragment() {
                 binding.catRow1Col2.setCardBackgroundColor(resources.getColor(R.color.grey))
             } else if (abstractClick) {
                 abstractClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getAllWallpaper(1)
                 binding.catRow1Col2.setCardBackgroundColor(resources.getColor(R.color.white))
 
@@ -190,6 +201,7 @@ class HomeFragment : Fragment() {
                 natureClick = false
                 trendingClick = false
                 sportClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getWallpaper("game", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -199,7 +211,7 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-
+                            binding.progressCircular.visibility=View.GONE
                         }
                     }
 
@@ -212,6 +224,7 @@ class HomeFragment : Fragment() {
                 binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.white))
             } else if (gameClick) {
                 gameClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getAllWallpaper(1)
                 binding.catRow2Col1.setCardBackgroundColor(resources.getColor(R.color.white))
 
@@ -227,6 +240,7 @@ class HomeFragment : Fragment() {
                 gameClick = false
                 trendingClick = false
                 sportClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getWallpaper("nature", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -236,7 +250,7 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-
+                            binding.progressCircular.visibility=View.GONE
                         }
                     }
 
@@ -249,6 +263,7 @@ class HomeFragment : Fragment() {
                 binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.white))
             } else if (natureClick) {
                 natureClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getAllWallpaper(1)
                 binding.catRow2Col2.setCardBackgroundColor(resources.getColor(R.color.white))
 
@@ -264,6 +279,7 @@ class HomeFragment : Fragment() {
                 gameClick = false
                 natureClick = false
                 sportClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getWallpaper("trending", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -273,7 +289,7 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-
+                            binding.progressCircular.visibility=View.GONE
                         }
                     }
 
@@ -286,6 +302,7 @@ class HomeFragment : Fragment() {
                 binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.white))
             } else if (trendingClick) {
                 trendingClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getAllWallpaper(1)
                 binding.catRow3Col1.setCardBackgroundColor(resources.getColor(R.color.white))
 
@@ -301,6 +318,7 @@ class HomeFragment : Fragment() {
                 gameClick = false
                 natureClick = false
                 trendingClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getWallpaper("sport", page)
                 viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
                     if (it.isSuccessful) {
@@ -310,7 +328,7 @@ class HomeFragment : Fragment() {
                                 response.photos as ArrayList<Photo>,
                                 requireContext()
                             )
-
+                            binding.progressCircular.visibility=View.GONE
                         }
                     }
 
@@ -323,6 +341,7 @@ class HomeFragment : Fragment() {
                 binding.catRow1Col1.setCardBackgroundColor(resources.getColor(R.color.white))
             } else if (sportClick) {
                 sportClick = false
+                binding.progressCircular.visibility=View.VISIBLE
                 viewModel.getAllWallpaper(1)
                 binding.catRow3Col2.setCardBackgroundColor(resources.getColor(R.color.white))
 
@@ -349,6 +368,8 @@ class HomeFragment : Fragment() {
                         requireContext()
                     )
                     binding.tvLoadMore.text = page.toString()
+                    binding.progressCircular.visibility=View.GONE
+
                 }
             }
         })

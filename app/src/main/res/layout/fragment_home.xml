@@ -347,6 +347,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/page_linear" />
+            <com.sn.lib.NestedProgress
+                android:id="@+id/progress_circular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:innerAnimInterpolator="linear"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/page_linear"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:outerAnimInterpolator="linear"
+                android:visibility="visible"
+                app:outerLoaderAnimDuration="1500" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
