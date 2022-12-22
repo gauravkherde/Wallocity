@@ -1,13 +1,11 @@
 package com.gaurav145.wallocity.fragment
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -44,7 +42,6 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        //  callViewModel()
         viewModel = (activity as MainActivity).viewModel
         prepareWallpaperRecycleView()
         observerWallpaper()
@@ -79,7 +76,6 @@ class HomeFragment : Fragment() {
         binding.leftArrow.setOnClickListener {
             page--
             if (page >= 1) {
-                binding.progressCircular.visibility=View.VISIBLE
                 if (minimalClick) viewModel.getWallpaper("minimal", page)
                 else if (abstractClick) viewModel.getWallpaper("abstract", page)
                 else if (gameClick) viewModel.getWallpaper("game", page)
@@ -353,7 +349,6 @@ class HomeFragment : Fragment() {
         wallpaperAdapter = WallpaperAdapter()
         binding.wallpaperRecycleView.apply {
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
-
             adapter = wallpaperAdapter
         }
     }

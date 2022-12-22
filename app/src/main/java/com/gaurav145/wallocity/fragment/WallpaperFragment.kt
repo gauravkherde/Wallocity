@@ -1,6 +1,8 @@
 package com.gaurav145.wallocity.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gaurav145.wallocity.activities.MainActivity
+import com.gaurav145.wallocity.activities.SetWallpaper
+import com.gaurav145.wallocity.adapter.CategoriesWallpaperAdapter
 import com.gaurav145.wallocity.adapter.WallpaperAdapter
 import com.gaurav145.wallocity.databinding.FragmentWallpaperBinding
 import com.gaurav145.wallocity.models.Photo
@@ -17,7 +21,7 @@ import com.gaurav145.wallocity.viewModel.HomeViewModel
 class WallpaperFragment : Fragment() {
 
 lateinit var binding:FragmentWallpaperBinding
-lateinit var wallpaperAdapter: WallpaperAdapter
+lateinit var categoriesWallpaperAdapter: CategoriesWallpaperAdapter
     lateinit var viewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,13 +39,14 @@ lateinit var wallpaperAdapter: WallpaperAdapter
         binding.progressCircular1.visibility=View.VISIBLE
         prepareWallpaperRecycleView()
         observerWallpaper()
+        onWallpaperClick()
         return binding.root
     }
     private fun prepareWallpaperRecycleView() {
-        wallpaperAdapter= WallpaperAdapter()
+        categoriesWallpaperAdapter= CategoriesWallpaperAdapter()
         binding.wallpaperRecycleViewFrag.apply {
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
-            adapter = wallpaperAdapter
+            adapter = categoriesWallpaperAdapter
         }
     }
 
@@ -52,7 +57,7 @@ lateinit var wallpaperAdapter: WallpaperAdapter
             if (it.isSuccessful) {
                 val response = it.body()
                 if (response != null) {
-                    wallpaperAdapter.setWallpapers(
+                    categoriesWallpaperAdapter.setWallpapers(
                         response.photos as ArrayList<Photo>,
                         requireContext()
                     )
@@ -62,11 +67,19 @@ lateinit var wallpaperAdapter: WallpaperAdapter
         })
 
     }
+    private fun onWallpaperClick() {
+        categoriesWallpaperAdapter.onItemClick = {
+            val intent = Intent(activity, SetWallpaper::class.java)
+            intent.putExtra(HomeFragment.WALL_SRC, it.src.portrait)
+            intent.putExtra(HomeFragment.WALL_SRC_ID, it.id.toString())
+            startActivity(intent)
+        }
+    }
 
     override fun onResume() {
         super.onResume()
         binding.progressCircular1.visibility=View.VISIBLE
-        wallpaperAdapter.clear()
+        categoriesWallpaperAdapter.setWallpapers(ArrayList(emptyList()), context?.applicationContext!!)
     }
     companion object {
 

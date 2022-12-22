@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.gaurav145.wallocity.R
 import com.gaurav145.wallocity.activities.SetWallpaper
+import com.gaurav145.wallocity.adapter.CategoriesWallpaperAdapter
 import com.gaurav145.wallocity.adapter.WallpaperAdapter
 import com.gaurav145.wallocity.databinding.FragmentCategoriesBinding
 
@@ -16,6 +17,7 @@ import com.gaurav145.wallocity.databinding.FragmentCategoriesBinding
 class CategoriesFragment : Fragment() {
     lateinit var binding: FragmentCategoriesBinding
     private val bundle = Bundle()
+    lateinit var categoriesWallpaperAdapter: CategoriesWallpaperAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,7 @@ class CategoriesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCategoriesBinding.inflate(inflater)
+        categoriesWallpaperAdapter=CategoriesWallpaperAdapter()
         onCardsClick()
         return binding.root
     }
@@ -88,7 +91,10 @@ class CategoriesFragment : Fragment() {
         }
 
     }
-
+    override fun onResume() {
+        super.onResume()
+        categoriesWallpaperAdapter.clear()
+    }
     companion object {
         const val CAT_NAME = "CAT_NAME"
     }
