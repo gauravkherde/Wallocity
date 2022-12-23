@@ -1,6 +1,5 @@
 package com.gaurav145.wallocity.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.gaurav145.wallocity.R
-import com.gaurav145.wallocity.activities.SetWallpaper
 import com.gaurav145.wallocity.adapter.CategoriesWallpaperAdapter
-import com.gaurav145.wallocity.adapter.WallpaperAdapter
 import com.gaurav145.wallocity.databinding.FragmentCategoriesBinding
 
 

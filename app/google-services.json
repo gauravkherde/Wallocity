@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "256192929758",
+    "project_id": "wallocity-7edd1",
+    "storage_bucket": "wallocity-7edd1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256192929758:android:61f9eb36dd6a0e633fc74f",
+        "android_client_info": {
+          "package_name": "com.gaurav145.wallocity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256192929758-ldc0ab41rua293o44ekkc2ud5lebkv8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9YWrk_dgz2V7LwPimYdD-dwcJVwKJEkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256192929758-ldc0ab41rua293o44ekkc2ud5lebkv8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

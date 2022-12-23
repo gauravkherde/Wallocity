@@ -2,6 +2,7 @@ package com.gaurav145.wallocity.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.gaurav145.wallocity.adapter.WallpaperAdapter
 import com.gaurav145.wallocity.databinding.FragmentHomeBinding
 import com.gaurav145.wallocity.models.Photo
 import com.gaurav145.wallocity.viewModel.HomeViewModel
+import com.google.android.gms.ads.MobileAds
 
 
 class HomeFragment : Fragment() {
@@ -33,6 +35,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MobileAds.initialize(requireContext()) {}
 
     }
 
@@ -43,6 +46,8 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         viewModel = (activity as MainActivity).viewModel
+
+        onEnterClickOnKeyBoard()
         prepareWallpaperRecycleView()
         observerWallpaper()
         onSearchButton()
@@ -53,7 +58,29 @@ class HomeFragment : Fragment() {
         return binding.root
 
     }
-
+    private fun onEnterClickOnKeyBoard() {
+        binding.tvSearch.setOnKeyListener(View.OnKeyListener { _, keyCode, _ ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                binding.progressCircular.visibility=View.VISIBLE
+                var searchText: String = binding.tvSearch.text.toString()
+                viewModel.getWallpaper(searchText, 1)
+                viewModel.wallpaperLiveData.observe(viewLifecycleOwner, Observer {
+                    if (it.isSuccessful) {
+                        val response = it.body()
+                        if (response != null) {
+                            wallpaperAdapter.setWallpapers(
+                                response.photos as ArrayList<Photo>,
+                                requireContext()
+                            )
+                            binding.progressCircular.visibility=View.GONE
+                        }
+                    }
+                })
+                return@OnKeyListener true
+            }
+            false
+        })
+    }
     private fun onNextPageClick() {
 
         binding.rightArrow.setOnClickListener {

@@ -26,10 +26,13 @@
             android:layout_height="wrap_content"
             android:text="Wallocity"
             android:gravity="center"
-            android:fontFamily="@font/myfont"
+            android:fontFamily="@font/font"
             android:textStyle="bold"
-            android:textColor="@color/wallpaper_Primary"
-            android:textSize="30dp"
+            android:textColor="@color/primary"
+            android:textSize="35dp"
+            android:shadowColor="@color/black"
+            android:shadowDx="@integer/material_motion_duration_long_2"
+            android:shadowDy="@integer/material_motion_duration_long_2"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
     <TextView
@@ -39,8 +42,9 @@
         android:gravity="center"
         android:fontFamily="@font/myfont"
         android:textStyle="bold"
-        android:textColor="@color/wallpaper_Primary"
+        android:textColor="@color/primary"
         android:textSize="20dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

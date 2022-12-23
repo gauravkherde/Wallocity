@@ -2,7 +2,6 @@ package com.gaurav145.wallocity.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.gaurav145.wallocity.activities.MainActivity
 import com.gaurav145.wallocity.activities.SetWallpaper
 import com.gaurav145.wallocity.adapter.CategoriesWallpaperAdapter
-import com.gaurav145.wallocity.adapter.WallpaperAdapter
 import com.gaurav145.wallocity.databinding.FragmentWallpaperBinding
 import com.gaurav145.wallocity.models.Photo
 import com.gaurav145.wallocity.viewModel.HomeViewModel

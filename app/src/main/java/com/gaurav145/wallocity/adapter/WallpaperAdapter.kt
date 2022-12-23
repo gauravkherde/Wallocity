@@ -1,6 +1,5 @@
 package com.gaurav145.wallocity.adapter
 
-import android.R.attr.data
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -33,7 +32,6 @@ class WallpaperAdapter: RecyclerView.Adapter<WallpaperAdapter.WallpaperViewHolde
         holder.itemView.setOnClickListener {
             onItemClick!!.invoke(wallpaperList[position])
         }
-
     }
 
     override fun getItemCount(): Int {

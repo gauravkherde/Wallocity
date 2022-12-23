@@ -1,13 +1,11 @@
 package com.gaurav145.wallocity.adapter
 
-import android.R.attr.data
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gaurav145.wallocity.databinding.CategoryWallpaperItemBinding
-import com.gaurav145.wallocity.databinding.ItemLayoutBinding
 import com.gaurav145.wallocity.models.Photo
 
 
