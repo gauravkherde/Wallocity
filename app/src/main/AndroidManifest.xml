@@ -9,9 +9,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/applogo"
+        android:icon="@drawable/applogopng"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/applogo_round"
+        android:roundIcon="@drawable/applogo_round_png"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wallocity"
         tools:targetApi="31">

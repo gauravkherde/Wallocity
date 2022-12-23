@@ -7,25 +7,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.gaurav145.wallocity.activities.MainActivity
 import com.gaurav145.wallocity.activities.SetWallpaper
 import com.gaurav145.wallocity.adapter.CategoriesWallpaperAdapter
 import com.gaurav145.wallocity.databinding.FragmentWallpaperBinding
 import com.gaurav145.wallocity.models.Photo
-import com.gaurav145.wallocity.viewModel.HomeViewModel
+import com.gaurav145.wallocity.retrofit.WallpaperRepository
+import com.gaurav145.wallocity.viewModel.CategoryViewModelFactory
+import com.gaurav145.wallocity.viewModel.CategoryViewModel
 
 
 class WallpaperFragment : Fragment() {
 
 lateinit var binding:FragmentWallpaperBinding
 lateinit var categoriesWallpaperAdapter: CategoriesWallpaperAdapter
-    lateinit var viewModel: HomeViewModel
-
+    private val viewModel: CategoryViewModel by lazy {
+        val repository = WallpaperRepository()
+        val categoryVIewModelFactory = CategoryViewModelFactory(repository)
+        ViewModelProvider(this, categoryVIewModelFactory)[CategoryViewModel::class.java]
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // binding.root.removeAllViews()
-        viewModel = (activity as MainActivity).viewModel
     }
 
     override fun onCreateView(
@@ -74,11 +77,6 @@ lateinit var categoriesWallpaperAdapter: CategoriesWallpaperAdapter
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        binding.progressCircular1.visibility=View.VISIBLE
-        categoriesWallpaperAdapter.setWallpapers(ArrayList(emptyList()), context?.applicationContext!!)
-    }
     companion object {
 
     }

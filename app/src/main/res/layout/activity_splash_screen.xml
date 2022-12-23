@@ -19,7 +19,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:padding="10dp"
-            android:src="@mipmap/applogo"
+            android:src="@drawable/applogopng"
             android:scaleType="fitXY"/>
         <TextView
             android:layout_width="match_parent"
