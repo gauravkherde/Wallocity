@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.gaurav145.wallocity.R
 import com.gaurav145.wallocity.activities.SetWallpaper
 import com.gaurav145.wallocity.adapter.CategoriesWallpaperAdapter
 import com.gaurav145.wallocity.databinding.FragmentWallpaperBinding
@@ -37,6 +40,12 @@ lateinit var categoriesWallpaperAdapter: CategoriesWallpaperAdapter
     ): View? {
         // Inflate the layout for this fragment
         binding=FragmentWallpaperBinding.inflate(inflater)
+        val callback=object :OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_wallpaperFragment_to_categoriesFragment)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
         binding.progressCircular1.visibility=View.VISIBLE
         prepareWallpaperRecycleView()
         observerWallpaper()

@@ -6,6 +6,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -59,8 +60,8 @@ class HomeFragment : Fragment() {
 
     }
     private fun onEnterClickOnKeyBoard() {
-        binding.tvSearch.setOnKeyListener(View.OnKeyListener { _, keyCode, _ ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+        binding.tvSearch.setOnEditorActionListener { v, actionId, event ->
+            if(actionId == EditorInfo.IME_ACTION_SEARCH){
                 binding.progressCircular.visibility=View.VISIBLE
                 var searchText: String = binding.tvSearch.text.toString()
                 viewModel.getWallpaper(searchText, 1)
@@ -76,10 +77,11 @@ class HomeFragment : Fragment() {
                         }
                     }
                 })
-                return@OnKeyListener true
+                true
+            } else {
+                false
             }
-            false
-        })
+        }
     }
     private fun onNextPageClick() {
 
